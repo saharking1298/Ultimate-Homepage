@@ -1,4 +1,13 @@
 const fileDialog = document.getElementById("file-dialog");
+const buttons = {
+    shortcutCreation: document.getElementById("shortcut-create-btn"),
+    shortcutRename: document.getElementById("shortcut-rename-btn"),
+    shortcutRemove: document.getElementById("shortcut-remove-btn"),
+    import: document.getElementById("import-btn"),
+    export: document.getElementById("export-btn"),
+    reset: document.getElementById("reset-btn"),
+    close: document.getElementById("close-btn")
+};
 
 function download(filename, content) {
     const element = document.createElement('a');
@@ -30,7 +39,10 @@ async function getCurrentTab() {
 class App {
     constructor () {
         this.manager = new DataManager();
-        this.currentTab;
+        this.session = {
+            resetWarning: true
+        };
+        this.currentTab = null;
     }
 
     exportData () {
@@ -40,6 +52,18 @@ class App {
 
     importData () {
         fileDialog.click();
+    }
+
+    resetData () {
+        if (this.session.resetWarning) {
+            document.getElementById("reset-btn").innerText = "Press Again To Reset";
+            this.session.resetWarning = false;
+        }
+        else {
+            this.manager.removeAllShortcuts();
+            buttons.reset.style.display = "none";
+            log("Reset homepage successfully!")
+        }
     }
 
     showShortcutEdit () {
@@ -96,13 +120,14 @@ class App {
 const app = new App();
 
 // defining button actions
-document.getElementById("shortcut-create-btn").addEventListener("click", () => {app.createShortcut()});
-document.getElementById("shortcut-rename-btn").addEventListener("click", () => {app.renameShortcut()});
-document.getElementById("shortcut-remove-btn").addEventListener("click", () => {app.removeShortcut()});
 document.getElementById("shortcut-name-input").addEventListener("focus", e => {e.target.select()});
-document.getElementById("close-btn").addEventListener("click", () => {window.close()})
-document.getElementById("export-btn").addEventListener("click", () => {app.exportData()});
-document.getElementById("import-btn").addEventListener("click", () => {app.importData()});
+buttons.shortcutCreation.addEventListener("click", () => {app.createShortcut()});
+buttons.shortcutRename.addEventListener("click", () => {app.renameShortcut()});
+buttons.shortcutRemove.addEventListener("click", () => {app.removeShortcut()});
+buttons.close.addEventListener("click", () => {window.close()});
+buttons.import.addEventListener("click", () => {app.importData()});
+buttons.export.addEventListener("click", () => {app.exportData()});
+buttons.reset.addEventListener("click", () => {app.resetData()});
 fileDialog.addEventListener("change", () => {
     const file = fileDialog.files[0];
     if (file.name.endsWith(".json")) {

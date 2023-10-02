@@ -59,7 +59,7 @@ class DataManager {
         }
     }
 
-    async removeAllShortcut() {
+    async removeAllShortcuts() {
         this.shortcuts = [];
         await this.saveData();
     }
