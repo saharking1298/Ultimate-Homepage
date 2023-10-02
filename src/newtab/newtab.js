@@ -1,3 +1,5 @@
+const charLimit = 18;
+
 const backup = [
     {name: "N12", url: "https://www.n12.co.il/"},
     {name: "ynet", url: "https://www.ynet.co.il/home/0,7340,L-8,00.html/"},
@@ -6,10 +8,16 @@ const backup = [
     {name: "PhotoPea", url: "https://www.photopea.com/"},
 ];
 
+
+
 function render (data) {
     const display = document.getElementById("shortcuts-display");
     for (let item of data) {
-        display.innerHTML += `<div class="shortcut-card"><a href="${item.url}" target="_blank"><div class="shortcut-image"><img src="https://s2.googleusercontent.com/s2/favicons?sz=32&domain_url=${item.url}" alt=${item.name}"></div><span>${item.name}</span></a></div>`;
+        let name = item.name;
+        if (name.length > charLimit) {
+            name = name.substring(0, charLimit) + "...";
+        }
+        display.innerHTML += `<div class="shortcut-card"><a href="${item.url}" target="_blank"><div class="shortcut-image"><img src="https://s2.googleusercontent.com/s2/favicons?sz=32&domain_url=${item.url}" alt=${name}"></div><span>${name}</span></a></div>`;
     }
 };
 
