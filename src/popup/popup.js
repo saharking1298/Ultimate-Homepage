@@ -76,5 +76,6 @@ document.getElementById("shortcut-create-btn").addEventListener("click", () => {
 document.getElementById("shortcut-rename-btn").addEventListener("click", () => {app.renameShortcut()});
 document.getElementById("shortcut-remove-btn").addEventListener("click", () => {app.removeShortcut()});
 document.getElementById("shortcut-name-input").addEventListener("focus", e => {e.target.select()});
+document.getElementById("close-btn").addEventListener("click", () => {window.close()})
 
 app.run();
