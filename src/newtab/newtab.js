@@ -1,15 +1,5 @@
 const charLimit = 18;
 
-const backup = [
-    {name: "N12", url: "https://www.n12.co.il/"},
-    {name: "ynet", url: "https://www.ynet.co.il/home/0,7340,L-8,00.html/"},
-    {name: "walla", url: "https://www.walla.co.il/"},
-    {name: "Leonardo AI", url: "https://app.leonardo.ai/"},
-    {name: "PhotoPea", url: "https://www.photopea.com/"},
-];
-
-
-
 function render (data) {
     const display = document.getElementById("shortcuts-display");
     for (let item of data) {
@@ -24,8 +14,6 @@ function render (data) {
 async function run () {
     const manager = new DataManager();
     await manager.init();
-    // await manager.removeAllShortcut();
-    // await manager.setShortcuts(backup);
 
     render(manager.shortcuts);
 }
