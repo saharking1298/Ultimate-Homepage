@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> New Tab </title>
+    <link rel="stylesheet" href="./popup.css">
+</head>
+<body>
+    <div id="shortcut-edit" class="hidden">
+        <label for="shortcut-name-textbox"></label>
+        <input type="text" id="shortcut-name-input">
+        <div class="flexbox">
+            <button id="shortcut-rename-btn"> Rename Shortcut </button>
+            <button id="shortcut-remove-btn"> Remove Shortcut </button>
+        </div>
+    </div>
+    <div id="shortcut-creation" class="hidden">
+        <button id="shortcut-create-btn"> Create Shortcut </button>
+    </div>
+    <hr>
+    <ul id="log-display"></ul>
+    <script src="/scripts/logger.js"></script>
+    <script src="/scripts/dataManager.js"> </script>
+    <script src="./popup.js"> </script>
+</body>
+</html>

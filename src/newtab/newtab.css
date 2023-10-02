@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background: #404258 !important;
+    color: #aaafc2;
+}
+
+h1 {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shortcut-card {
+    width: 60px;
+    height: 80px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.shortcut-card a {
+    display: block;
+    text-decoration: none;
+}
+.shortcut-card img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
+.shortcut-image {
+    background: #6B728E;
+    border-radius: 8px;
+    padding: 8px;
+    transition: opacity 0.1s;
+    margin-bottom: 2px;
+}
+.shortcut-image:hover {
+    opacity: 0.8;
+
+}
+.shortcut-card span {
+    display: block;
+    text-align: center;
+    font-size: 0.9em;
+    color: #aaafc2;
+}

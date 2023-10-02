@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Awesome Homepage",
+    "version": "1.0.0",
+    "description": "An awesome customizable homepage for Kiwi browser",
+    "author": "Sahar Lando",
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_title": "Awesome Homepage"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "tabs"
+    ],
+    "chrome_url_overrides" : {
+        "newtab": "newtab/newtab.html"
+    }
+}

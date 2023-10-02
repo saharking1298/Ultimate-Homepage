@@ -1,0 +1,10 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background: #404258 !important;
+    color: #aaafc2;
+}
+
+.hidden {
+    display: none;
+}
+
