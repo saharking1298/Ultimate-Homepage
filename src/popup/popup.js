@@ -1,3 +1,18 @@
+const fileDialog = document.getElementById("file-dialog");
+
+function download(filename, content) {
+    const element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(content));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
 async function getCurrentTab() {
     return new Promise((resolve, reject) => {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -16,6 +31,15 @@ class App {
     constructor () {
         this.manager = new DataManager();
         this.currentTab;
+    }
+
+    exportData () {
+        download("homepage.json", JSON.stringify(this.manager.shortcuts, null, 2));
+        log("Exported data successfully!")
+    }
+
+    importData () {
+        fileDialog.click();
     }
 
     showShortcutEdit () {
@@ -77,5 +101,28 @@ document.getElementById("shortcut-rename-btn").addEventListener("click", () => {
 document.getElementById("shortcut-remove-btn").addEventListener("click", () => {app.removeShortcut()});
 document.getElementById("shortcut-name-input").addEventListener("focus", e => {e.target.select()});
 document.getElementById("close-btn").addEventListener("click", () => {window.close()})
+document.getElementById("export-btn").addEventListener("click", () => {app.exportData()});
+document.getElementById("import-btn").addEventListener("click", () => {app.importData()});
+fileDialog.addEventListener("change", () => {
+    const file = fileDialog.files[0];
+    if (file.name.endsWith(".json")) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const data = JSON.parse(reader.result);
+                console.log(data);
+                app.manager.setShortcuts(data);
+                log("Imported homepage successfully!")
+            }
+            catch {
+                log("Error importing corrupted JSON file!");
+            }
+        };
+        reader.readAsText(file);
+    }
+    else {
+        log("Error importing non-JSON file!");
+    }
+});
 
 app.run();
