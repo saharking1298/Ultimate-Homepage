@@ -52,6 +52,10 @@ class App {
         // Initializing the application
         await this.manager.init();
         this.currentTab = await getCurrentTab();
+        
+        // Inserting data to the page
+        document.getElementById("page-title-label").innerText = this.currentTab.title;
+
         // Checking if the wether current tab is saved to shortcuts
         const shortcut = this.manager.getShortcut(this.currentTab.url);
 
@@ -71,5 +75,6 @@ const app = new App();
 document.getElementById("shortcut-create-btn").addEventListener("click", () => {app.createShortcut()});
 document.getElementById("shortcut-rename-btn").addEventListener("click", () => {app.renameShortcut()});
 document.getElementById("shortcut-remove-btn").addEventListener("click", () => {app.removeShortcut()});
+document.getElementById("shortcut-name-input").addEventListener("focus", e => {e.target.select()});
 
 app.run();

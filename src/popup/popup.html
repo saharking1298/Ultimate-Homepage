@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="./popup.css">
 </head>
 <body>
-    <div id="shortcut-edit" class="hidden">
-        <label for="shortcut-name-textbox"></label>
-        <input type="text" id="shortcut-name-input">
-        <div class="flexbox">
-            <button id="shortcut-rename-btn"> Rename Shortcut </button>
-            <button id="shortcut-remove-btn"> Remove Shortcut </button>
+    <div id="wrapper">
+        <h1> Shortcut Manager </h1>
+        <p> Current Page: <span id="page-title-label"> </span> </p>
+        <div id="shortcut-edit" class="hidden">
+            <div class="margin-bottom">
+                <label for="shortcut-name-input"> Shortcut name: </label>
+                <input type="text" id="shortcut-name-input">
+            </div>
+            <div class="flexbox">
+                <button id="shortcut-rename-btn"> Rename Shortcut </button>
+                <button id="shortcut-remove-btn"> Remove Shortcut </button>
+            </div>
         </div>
+        <div id="shortcut-creation" class="hidden flexbox">
+            <button id="shortcut-create-btn"> Create Shortcut </button>
+        </div>
+        <hr>
+        <ul id="log-display"></ul>
     </div>
-    <div id="shortcut-creation" class="hidden">
-        <button id="shortcut-create-btn"> Create Shortcut </button>
-    </div>
-    <hr>
-    <ul id="log-display"></ul>
     <script src="/scripts/logger.js"></script>
     <script src="/scripts/dataManager.js"> </script>
     <script src="./popup.js"> </script>

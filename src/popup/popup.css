@@ -1,10 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Jost&family=Roboto:wght@400;700&display=swap');
+
 html, body {
     font-family: 'Roboto', sans-serif;
     background: #404258 !important;
-    color: #aaafc2;
+    color: white;
+    width: 300px;
+    height: 500px;
+    margin: 0;
+}
+
+#wrapper {
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    font-size: 1.1em;
 }
 
 .hidden {
     display: none;
+}
+
+.flexbox {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.margin-bottom {
+    margin-bottom: 5px;
+}
+
+button {
+    all: unset;
+    background: #6B728E;
+    color: white;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    border-radius: 8px;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: bold;
+    font-size: 1.15em;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+button:hover {
+    background-color: #404258;
+    opacity: 0.9;
+}
+
+button:focus {
+    outline: revert;
 }
 
