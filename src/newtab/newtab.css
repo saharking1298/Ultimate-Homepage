@@ -47,6 +47,17 @@ section {
     opacity: 0.8;
 
 }
+.missing-image {
+    font-size: 2.5em;
+    width: 44px;
+    height: 44px;
+    background: #50577A;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 44px;
+    color: white;
+}
 .shortcut-card span {
     display: block;
     text-align: center;
